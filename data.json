@@ -1,16 +1,6 @@
 {
   "tasks": [
     {
-      "id": 21,
-      "cliente": "UNIMED",
-      "acao": "Renovacao contrato WhatsApp e URA",
-      "prioridade": "media",
-      "prazo": "2026-04-08",
-      "prazoLabel": "Vence em 2d (08/04)",
-      "status": "pending",
-      "createdAt": "2026-04-09T09:00:00Z"
-    },
-    {
       "id": 12,
       "cliente": "AEGEA",
       "acao": "Envio proposta comercial atualizada",
@@ -47,6 +37,16 @@
       "prioridade": "media",
       "prazo": "2026-04-12",
       "prazoLabel": "Alvo 12/04",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 21,
+      "cliente": "UNIMED",
+      "acao": "Renovacao contrato WhatsApp e URA",
+      "prioridade": "media",
+      "prazo": "2026-04-08",
+      "prazoLabel": "Vence em 2d (08/04)",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
     },
@@ -212,5 +212,5 @@
     }
   ],
   "nextId": 22,
-  "ts": 1775833835958
+  "ts": 1775833839393
 }
