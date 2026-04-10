@@ -1,0 +1,17 @@
+{
+  "tasks": [
+    {"id": 1, "cliente": "Aegea", "acao": "Enviar proposta", "prioridade": "alta", "prazo": "2026-04-10", "prazoLabel": "Hoje 10h", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 2, "cliente": "EMS", "acao": "Revisar material de ROI para defender o projeto na reuniao de hoje", "prioridade": "alta", "prazo": "2026-04-10", "prazoLabel": "Hoje 15h", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 3, "cliente": "YDUQS - Full CX", "acao": "Proposta com pedido de suprimentos para abertura dos custos ATH/IAM e reducao da tabela do variavel", "prioridade": "alta", "prazo": "2026-04-10", "prazoLabel": "Hoje 17h", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 4, "cliente": "YDUQS - IAM", "acao": "Revisao proposta IAM - hoje R$5.900/732 chamadas, pleito e aumentar capacidade do AD", "prioridade": "alta", "prazo": "2026-04-10", "prazoLabel": "Hoje 17h", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 5, "cliente": "Etihad", "acao": "Enviar proposta", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 6, "cliente": "Movida", "acao": "Enviar detalhamento solicitado pelo Zuza", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 7, "cliente": "Ituran", "acao": "Email para Rodolfo alinhando proximos passos", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 8, "cliente": "Banco Pan / BTG", "acao": "FUP Kelly - solicitar minuta contratual para formalizacao IAM", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 9, "cliente": "Caixa", "acao": "Analisar edital de mensageria e enderecar para Fernando Araujo", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 10, "cliente": "Too Seguros", "acao": "FUP Celina - retomar negociacao Full CX", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"},
+    {"id": 11, "cliente": "YDUQS - Aquino", "acao": "Enviar apresentacao para Aquino e puxar agenda com novas oportunidades", "prioridade": "media", "prazo": "", "prazoLabel": "", "status": "pending", "createdAt": "2026-04-08T08:00:00Z"}
+  ],
+  "nextId": 12,
+  "ts": 1775822400000
+}
