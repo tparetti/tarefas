@@ -101,16 +101,6 @@
       "createdAt": "2026-04-09T09:00:00Z"
     },
     {
-      "id": 1,
-      "cliente": "Aegea",
-      "acao": "Enviar proposta",
-      "prioridade": "alta",
-      "prazo": "2026-04-10",
-      "prazoLabel": "Hoje 10h",
-      "status": "pending",
-      "createdAt": "2026-04-08T08:00:00Z"
-    },
-    {
       "id": 2,
       "cliente": "EMS",
       "acao": "Revisar material de ROI para defender o projeto na reuniao de hoje",
@@ -212,5 +202,5 @@
     }
   ],
   "nextId": 22,
-  "ts": 1775834056445
+  "ts": 1775834064845
 }
