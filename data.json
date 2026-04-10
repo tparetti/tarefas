@@ -21,6 +21,16 @@
       "createdAt": "2026-04-09T09:00:00Z"
     },
     {
+      "id": 17,
+      "cliente": "EMS",
+      "acao": "Material agenda Thiago Pereira",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
       "id": 21,
       "cliente": "UNIMED",
       "acao": "Renovacao contrato WhatsApp e URA",
@@ -57,16 +67,6 @@
       "prioridade": "media",
       "prazo": "2026-04-12",
       "prazoLabel": "Alvo 12/04",
-      "status": "pending",
-      "createdAt": "2026-04-09T09:00:00Z"
-    },
-    {
-      "id": 17,
-      "cliente": "EMS",
-      "acao": "Material agenda Thiago Pereira",
-      "prioridade": "media",
-      "prazo": "2026-04-07",
-      "prazoLabel": "Vence em 1d (07/04)",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
     },
@@ -202,5 +202,5 @@
     }
   ],
   "nextId": 22,
-  "ts": 1775834082780
+  "ts": 1775834085010
 }
