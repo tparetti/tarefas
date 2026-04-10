@@ -12,8 +12,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
 .top h1{font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-.3px}
 .top .date-pill{background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:7px 16px;font-size:12px;color:#64748b;font-weight:500}
-#syncBtn{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:7px 14px;font-size:12px;color:#64748b;font-weight:600;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:6px}
-#syncBtn:hover{background:#f8fafc;color:#1e293b}
+#syncBtn{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:8px 16px;font-size:12px;color:#334155;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;gap:8px}
+#syncBtn:hover{background:#f8fafc;border-color:#cbd5e1}
+#syncBtn.sync-ok{border-color:#10b981;color:#059669}
+#syncBtn.sync-saving{border-color:#f59e0b;color:#d97706}
+#syncBtn.sync-err{border-color:#ef4444;color:#dc2626;background:#fef2f2}
+#syncBtn.sync-loading{border-color:#6366f1;color:#4f46e5;background:#eef2ff}
 
 /* KPI cards */
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
@@ -113,7 +117,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <h1>Tarefas do dia</h1>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
-      <button id="syncBtn" onclick="forceSync()" title="Sincronizar"><span class="dot-pulse"></span> <span id="syncLabel">sincronizado</span></button>
+      <button id="syncBtn" onclick="forceSync()" title="Clique para sincronizar"><span class="dot-pulse"></span> <span id="syncLabel">Carregando...</span></button>
       <div class="date-pill" id="todayDate">—</div>
     </div>
   </div>
@@ -195,23 +199,30 @@ var state={tasks:[],nextId:1,ts:0};
 var filter='all';
 var sortMode='manual';
 var editingId=null;
+var _loaded=false; // CRITICAL: prevent saves before first successful load
 
 function showSync(s){
   var lbl=document.getElementById('syncLabel');
+  var btn=document.getElementById('syncBtn');
   var dot=document.querySelector('#syncBtn .dot-pulse');
-  if(s==='ok'){lbl.textContent='salvo';if(dot)dot.style.background='#10b981'}
-  else if(s==='saving'){lbl.textContent='salvando...';if(dot)dot.style.background='#f59e0b'}
-  else if(s==='err'){lbl.textContent='erro';if(dot)dot.style.background='#ef4444'}
-  else{lbl.textContent='sincronizado';if(dot)dot.style.background='#10b981'}
+  if(!lbl||!btn)return;
+  btn.classList.remove('sync-ok','sync-saving','sync-err','sync-loading');
+  if(s==='ok'){lbl.textContent='✓ Sincronizado';btn.classList.add('sync-ok');if(dot)dot.style.background='#10b981'}
+  else if(s==='saving'){lbl.textContent='Salvando...';btn.classList.add('sync-saving');if(dot)dot.style.background='#f59e0b'}
+  else if(s==='err'){lbl.textContent='✗ Erro - clique para tentar';btn.classList.add('sync-err');if(dot)dot.style.background='#ef4444'}
+  else if(s==='loading'){lbl.textContent='Carregando...';btn.classList.add('sync-loading');if(dot)dot.style.background='#6366f1'}
+  else{lbl.textContent='Sincronizado';btn.classList.add('sync-ok');if(dot)dot.style.background='#10b981'}
 }
 
 function scheduleSave(){
+  if(!_loaded){console.log('Save blocked - not loaded yet');return}
   clearTimeout(_saveTimer);
   showSync('saving');
   _saveTimer=setTimeout(saveToCloud,400);
 }
 
 function saveToCloud(){
+  if(!_loaded){console.log('Save aborted - not loaded');return}
   state.ts=Date.now();
   try{localStorage.setItem('tarefas_data',JSON.stringify(state))}catch(e){}
   if(!_fileSha){
@@ -247,36 +258,47 @@ function doSave(){
 
 function loadFromCloud(silent){
   if(_syncing)return;_syncing=true;
+  if(!silent)showSync('loading');
   fetch(GH_API+'?ts='+Date.now(),{headers:{'Authorization':'Bearer '+GH_TK,'Cache-Control':'no-cache'}})
-    .then(function(r){return r.json()})
+    .then(function(r){
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      return r.json();
+    })
     .then(function(d){
       _syncing=false;
       if(d.sha)_fileSha=d.sha;
-      if(!d.content)return;
+      if(!d.content){
+        // Empty remote - use local if we have any, otherwise start fresh
+        _loaded=true;
+        render();
+        showSync('ok');
+        return;
+      }
       try{
         var raw=decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))));
         var data=JSON.parse(raw);
-        var localTs=0;
-        try{localTs=JSON.parse(localStorage.getItem('tarefas_data')||'{}').ts||0}catch(e){}
-        if((data.ts||0)>=localTs){
-          state=data;
-          if(!state.tasks)state.tasks=[];
-          if(!state.nextId)state.nextId=1;
-          localStorage.setItem('tarefas_data',JSON.stringify(state));
-          render();
-          if(!silent)showSync('ok');
-        }
-      }catch(e){console.log('Parse',e)}
-    }).catch(function(e){_syncing=false;console.log('Load',e);showSync('err')});
+        // Always trust remote as source of truth on load
+        state=data;
+        if(!state.tasks)state.tasks=[];
+        if(!state.nextId)state.nextId=1;
+        localStorage.setItem('tarefas_data',JSON.stringify(state));
+        _loaded=true;
+        render();
+        showSync('ok');
+      }catch(e){console.log('Parse',e);showSync('err')}
+    }).catch(function(e){
+      _syncing=false;
+      console.log('Load error',e);
+      showSync('err');
+      // Retry automatically in 5s
+      setTimeout(function(){if(!_loaded)loadFromCloud(true)},5000);
+    });
 }
 
 function forceSync(){saveToCloud();setTimeout(function(){loadFromCloud(false)},700)}
 
-// Local-first load
-try{
-  var cached=JSON.parse(localStorage.getItem('tarefas_data')||'null');
-  if(cached){state=cached;if(!state.tasks)state.tasks=[]}
-}catch(e){}
+// DO NOT load from localStorage on startup - always fetch from cloud first
+// This prevents stale local state from overwriting remote data
 
 // ============ DATE UTILS ============
 function today(){var d=new Date();d.setHours(0,0,0,0);return d}
@@ -481,9 +503,13 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEdit()}
 
 updateToday();
 setInterval(updateToday,60000);
+// Initial render shows empty state / loading
+showSync('loading');
 render();
-setTimeout(function(){loadFromCloud(false)},300);
-setInterval(function(){loadFromCloud(true)},15000);
+// Fetch cloud data immediately
+loadFromCloud(false);
+// Auto-refresh every 15 seconds (silent) - only after first load succeeds
+setInterval(function(){if(_loaded)loadFromCloud(true)},15000);
 </script>
 </body>
 </html>

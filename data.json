@@ -1,5 +1,216 @@
 {
-  "tasks": [],
-  "nextId": 1,
-  "ts": 1775831694804
+  "tasks": [
+    {
+      "id": 21,
+      "cliente": "UNIMED",
+      "acao": "Renovacao contrato WhatsApp e URA",
+      "prioridade": "media",
+      "prazo": "2026-04-08",
+      "prazoLabel": "Vence em 2d (08/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 20,
+      "cliente": "NEOENERGIA",
+      "acao": "Agendar almoço Evani semana 13/4",
+      "prioridade": "media",
+      "prazo": "2026-04-13",
+      "prazoLabel": "Alvo 13/04",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 19,
+      "cliente": "MOVIDA",
+      "acao": "Fup Zuza, alinhamento proximos passos",
+      "prioridade": "media",
+      "prazo": "2026-04-12",
+      "prazoLabel": "Alvo 12/04",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 18,
+      "cliente": "YDUQS",
+      "acao": "Devolutiva material agenda Diego - URA performance",
+      "prioridade": "media",
+      "prazo": "2026-04-12",
+      "prazoLabel": "Alvo 12/04",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 17,
+      "cliente": "EMS",
+      "acao": "Material agenda Thiago Pereira",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 16,
+      "cliente": "ITURAN",
+      "acao": "Marcar almoço Paulo Henrique",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 15,
+      "cliente": "BANCO PAN / BTG",
+      "acao": "Fup Kelly, processo minuta contratual",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 14,
+      "cliente": "YDUQS",
+      "acao": "Atualizacao proposta Full CX considerando tabela CCaaS",
+      "prioridade": "media",
+      "prazo": "2026-04-06",
+      "prazoLabel": "Vence hoje (06/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 13,
+      "cliente": "CASAS BAHIA",
+      "acao": "Abertura projeto POC IAM",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 12,
+      "cliente": "AEGEA",
+      "acao": "Envio proposta comercial atualizada",
+      "prioridade": "alta",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
+      "id": 1,
+      "cliente": "Aegea",
+      "acao": "Enviar proposta",
+      "prioridade": "alta",
+      "prazo": "2026-04-10",
+      "prazoLabel": "Hoje 10h",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "cliente": "EMS",
+      "acao": "Revisar material de ROI para defender o projeto na reuniao de hoje",
+      "prioridade": "alta",
+      "prazo": "2026-04-10",
+      "prazoLabel": "Hoje 15h",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "cliente": "YDUQS - Full CX",
+      "acao": "Proposta com pedido de suprimentos para abertura dos custos ATH/IAM e reducao da tabela do variavel",
+      "prioridade": "alta",
+      "prazo": "2026-04-10",
+      "prazoLabel": "Hoje 17h",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "cliente": "YDUQS - IAM",
+      "acao": "Revisao proposta IAM - hoje R$5.900/732 chamadas, pleito e aumentar capacidade do AD",
+      "prioridade": "alta",
+      "prazo": "2026-04-10",
+      "prazoLabel": "Hoje 17h",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "cliente": "Etihad",
+      "acao": "Enviar proposta",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "cliente": "Movida",
+      "acao": "Enviar detalhamento solicitado pelo Zuza",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 7,
+      "cliente": "Ituran",
+      "acao": "Email para Rodolfo alinhando proximos passos",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 8,
+      "cliente": "Banco Pan / BTG",
+      "acao": "FUP Kelly - solicitar minuta contratual para formalizacao IAM",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 9,
+      "cliente": "Caixa",
+      "acao": "Analisar edital de mensageria e enderecar para Fernando Araujo",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 10,
+      "cliente": "Too Seguros",
+      "acao": "FUP Celina - retomar negociacao Full CX",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    },
+    {
+      "id": 11,
+      "cliente": "YDUQS - Aquino",
+      "acao": "Enviar apresentacao para Aquino e puxar agenda com novas oportunidades",
+      "prioridade": "media",
+      "prazo": "",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-08T08:00:00Z"
+    }
+  ],
+  "nextId": 22,
+  "ts": 1775832000000
 }
