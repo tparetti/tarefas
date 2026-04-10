@@ -11,6 +11,16 @@
       "createdAt": "2026-04-09T09:00:00Z"
     },
     {
+      "id": 12,
+      "cliente": "AEGEA",
+      "acao": "Envio proposta comercial atualizada",
+      "prioridade": "alta",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
       "id": 20,
       "cliente": "NEOENERGIA",
       "acao": "Agendar almoço Evani semana 13/4",
@@ -85,16 +95,6 @@
       "cliente": "CASAS BAHIA",
       "acao": "Abertura projeto POC IAM",
       "prioridade": "media",
-      "prazo": "2026-04-07",
-      "prazoLabel": "Vence em 1d (07/04)",
-      "status": "pending",
-      "createdAt": "2026-04-09T09:00:00Z"
-    },
-    {
-      "id": 12,
-      "cliente": "AEGEA",
-      "acao": "Envio proposta comercial atualizada",
-      "prioridade": "alta",
       "prazo": "2026-04-07",
       "prazoLabel": "Vence em 1d (07/04)",
       "status": "pending",
@@ -212,5 +212,5 @@
     }
   ],
   "nextId": 22,
-  "ts": 1775832000000
+  "ts": 1775833835958
 }
