@@ -338,8 +338,6 @@ function filtered(){
 
   if(sortMode==='urgent'){
     list.sort(function(a,b){
-      if(a.status==='done' && b.status!=='done')return 1;
-      if(b.status==='done' && a.status!=='done')return -1;
       if(!a.prazo && !b.prazo)return 0;
       if(!a.prazo)return 1;
       if(!b.prazo)return -1;
@@ -350,6 +348,15 @@ function filtered(){
   }else if(sortMode==='priority'){
     var rank={alta:0,media:1,baixa:2};
     list.sort(function(a,b){return (rank[a.prioridade]||9)-(rank[b.prioridade]||9)});
+  }
+  // Always push done tasks to the bottom (regardless of sort mode)
+  // Except in the "done" filter, where we want to see them in order
+  if(filter!=='done'){
+    list.sort(function(a,b){
+      var aDone=a.status==='done'?1:0;
+      var bDone=b.status==='done'?1:0;
+      return aDone-bDone;
+    });
   }
   return list;
 }
