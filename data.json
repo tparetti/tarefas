@@ -41,6 +41,16 @@
       "createdAt": "2026-04-09T09:00:00Z"
     },
     {
+      "id": 16,
+      "cliente": "ITURAN",
+      "acao": "Marcar almoço Paulo Henrique",
+      "prioridade": "media",
+      "prazo": "2026-04-07",
+      "prazoLabel": "Vence em 1d (07/04)",
+      "status": "pending",
+      "createdAt": "2026-04-09T09:00:00Z"
+    },
+    {
       "id": 22,
       "cliente": "ITAU",
       "acao": "finalizar apresentacao cobranca - PJ",
@@ -87,16 +97,6 @@
       "prioridade": "media",
       "prazo": "2026-04-12",
       "prazoLabel": "Alvo 12/04",
-      "status": "pending",
-      "createdAt": "2026-04-09T09:00:00Z"
-    },
-    {
-      "id": 16,
-      "cliente": "ITURAN",
-      "acao": "Marcar almoço Paulo Henrique",
-      "prioridade": "media",
-      "prazo": "2026-04-07",
-      "prazoLabel": "Vence em 1d (07/04)",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
     },
@@ -222,5 +222,5 @@
     }
   ],
   "nextId": 24,
-  "ts": 1775834294087
+  "ts": 1775834305444
 }
