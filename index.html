@@ -58,7 +58,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .task:hover{box-shadow:0 3px 12px rgba(0,0,0,.04);border-color:#d4dbe6}
 .task.done{opacity:.55}
 .task.done .task-title{text-decoration:line-through;color:#94a3b8}
-.drag-handle{color:#cbd5e1;cursor:grab;font-size:18px;user-select:none;padding:0 2px}
+.drag-handle{color:#cbd5e1;cursor:grab;font-size:18px;user-select:none;padding:4px 6px;touch-action:none;border-radius:6px;transition:.15s}
+.drag-handle:hover{color:#4f46e5;background:#eef2ff}
+.drag-handle:active{cursor:grabbing}
+.task.dragging{opacity:.3;box-shadow:0 8px 24px rgba(79,70,229,.25);border-color:#4f46e5}
+.task.drag-over{border-top:3px solid #4f46e5;margin-top:-2px}
+.task.drag-over-bottom{border-bottom:3px solid #4f46e5;margin-bottom:-2px}
 .checkbox{width:22px;height:22px;border:2px solid #cbd5e1;border-radius:50%;cursor:pointer;flex-shrink:0;transition:.15s;display:flex;align-items:center;justify-content:center;background:#fff}
 .checkbox:hover{border-color:#4f46e5}
 .task.done .checkbox{background:#10b981;border-color:#10b981}
@@ -392,8 +397,8 @@ function render(){
       duePill='<span class="pill '+cls2+'">⏰ '+txt+'</span>';
     }
     var title=esc(t.cliente)+' — '+esc(t.acao);
-    html+='<div class="task '+(t.status==='done'?'done':'')+'">'
-      +'<span class="drag-handle">⋮⋮</span>'
+    html+='<div class="task '+(t.status==='done'?'done':'')+'" data-id="'+t.id+'" draggable="true">'
+      +'<span class="drag-handle" title="Arraste para reordenar">⋮⋮</span>'
       +'<div class="checkbox" onclick="toggleDone('+t.id+')"></div>'
       +'<div class="task-body">'
         +'<div class="task-title">'+title+'</div>'
@@ -410,6 +415,82 @@ function render(){
     +'</div>';
   });
   container.innerHTML=html;
+  wireDragAndDrop();
+}
+
+// ============ DRAG AND DROP ============
+var _dragId=null;
+
+function wireDragAndDrop(){
+  var tasks=document.querySelectorAll('.task');
+  tasks.forEach(function(el){
+    el.addEventListener('dragstart',onDragStart);
+    el.addEventListener('dragend',onDragEnd);
+    el.addEventListener('dragover',onDragOver);
+    el.addEventListener('dragleave',onDragLeave);
+    el.addEventListener('drop',onDrop);
+  });
+}
+
+function onDragStart(e){
+  if(sortMode!=='manual'){
+    e.preventDefault();
+    alert('Para arrastar tarefas, selecione a ordenação "Manual" no topo da lista.');
+    return false;
+  }
+  _dragId=parseInt(this.dataset.id);
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed='move';
+  try{e.dataTransfer.setData('text/plain',this.dataset.id)}catch(err){}
+}
+
+function onDragEnd(e){
+  this.classList.remove('dragging');
+  document.querySelectorAll('.task').forEach(function(el){
+    el.classList.remove('drag-over','drag-over-bottom');
+  });
+  _dragId=null;
+}
+
+function onDragOver(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect='move';
+  if(_dragId===null||parseInt(this.dataset.id)===_dragId)return;
+  document.querySelectorAll('.task').forEach(function(el){
+    el.classList.remove('drag-over','drag-over-bottom');
+  });
+  var rect=this.getBoundingClientRect();
+  var midY=rect.top+rect.height/2;
+  if(e.clientY<midY){
+    this.classList.add('drag-over');
+  }else{
+    this.classList.add('drag-over-bottom');
+  }
+}
+
+function onDragLeave(e){
+  this.classList.remove('drag-over','drag-over-bottom');
+}
+
+function onDrop(e){
+  e.preventDefault();
+  e.stopPropagation();
+  if(_dragId===null)return;
+  var targetId=parseInt(this.dataset.id);
+  if(targetId===_dragId)return;
+  var rect=this.getBoundingClientRect();
+  var midY=rect.top+rect.height/2;
+  var dropAbove=e.clientY<midY;
+  var fromIdx=state.tasks.findIndex(function(t){return t.id===_dragId});
+  var toIdx=state.tasks.findIndex(function(t){return t.id===targetId});
+  if(fromIdx<0||toIdx<0)return;
+  var moved=state.tasks.splice(fromIdx,1)[0];
+  // Recalculate target index after removal
+  toIdx=state.tasks.findIndex(function(t){return t.id===targetId});
+  var insertAt=dropAbove?toIdx:toIdx+1;
+  state.tasks.splice(insertAt,0,moved);
+  render();
+  scheduleSave();
 }
 
 // ============ ACTIONS ============
