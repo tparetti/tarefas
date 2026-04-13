@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 25,
+      "cliente": "BTG / PAN",
+      "acao": "Validar minuta contratual Gruber, atencao clausula limitacao responsabilidades multa",
+      "prioridade": "alta",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-13T18:52:47.893Z"
+    },
+    {
       "id": 24,
       "cliente": "CIELO",
       "acao": "Enviar e-mail com a apresentacao do full para Victor e Edu Lemos",
@@ -231,6 +241,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 25,
-  "ts": 1776101126797
+  "nextId": 26,
+  "ts": 1776106368296
 }
