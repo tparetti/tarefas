@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 28,
+      "cliente": "DELLOITTE",
+      "acao": "agenda da 2a rodada da apresentacao, analise perguntas",
+      "prioridade": "alta",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-14T19:09:35.039Z"
+    },
+    {
       "id": 27,
       "cliente": "CIELO",
       "acao": "retorno Vitor Madureira sobre o IAM",
@@ -261,6 +271,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 28,
-  "ts": 1776193755299
+  "nextId": 29,
+  "ts": 1776193775442
 }
