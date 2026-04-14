@@ -14,7 +14,7 @@
       "id": 27,
       "cliente": "CIELO",
       "acao": "retorno Vitor Madureira sobre o IAM",
-      "prioridade": "alta",
+      "prioridade": "media",
       "prazo": "2026-04-14",
       "prazoLabel": "",
       "status": "pending",
@@ -272,5 +272,5 @@
     }
   ],
   "nextId": 29,
-  "ts": 1776193775442
+  "ts": 1776193781083
 }
