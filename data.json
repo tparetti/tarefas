@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 27,
+      "cliente": "CIELO",
+      "acao": "retorno Vitor Madureira sobre o IAM",
+      "prioridade": "alta",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-14T19:09:14.897Z"
+    },
+    {
       "id": 26,
       "cliente": "YDUQS",
       "acao": "e-mail comprador respondendo proposta com/sem CCaaS",
@@ -251,6 +261,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 27,
-  "ts": 1776193741317
+  "nextId": 28,
+  "ts": 1776193755299
 }
