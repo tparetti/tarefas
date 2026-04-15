@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 29,
+      "cliente": "ITURAN",
+      "acao": "agendar cafe com a Cristina",
+      "prioridade": "alta",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-15T17:20:41.168Z"
+    },
+    {
       "id": 28,
       "cliente": "DELLOITTE",
       "acao": "agenda da 2a rodada da apresentacao, analise perguntas",
@@ -271,6 +281,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 29,
-  "ts": 1776196801678
+  "nextId": 30,
+  "ts": 1776273641570
 }
