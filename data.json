@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 30,
+      "cliente": "BRADESCO",
+      "acao": "enviar apresentacao cobranca",
+      "prioridade": "media",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-15T20:47:53.176Z"
+    },
+    {
       "id": 29,
       "cliente": "ITURAN",
       "acao": "agendar cafe com a Cristina",
@@ -281,6 +291,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 30,
-  "ts": 1776273641570
+  "nextId": 31,
+  "ts": 1776286073578
 }
