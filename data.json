@@ -165,7 +165,7 @@
       "cliente": "NEOENERGIA",
       "acao": "Agendar almoço Evani semana 13/4",
       "prioridade": "media",
-      "prazo": "2026-04-13",
+      "prazo": "2026-04-28",
       "prazoLabel": "Alvo 13/04",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
@@ -292,5 +292,5 @@
     }
   ],
   "nextId": 31,
-  "ts": 1776290018161
+  "ts": 1776293825332
 }
