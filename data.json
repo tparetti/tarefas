@@ -27,7 +27,7 @@
       "prioridade": "alta",
       "prazo": "2026-04-14",
       "prazoLabel": "",
-      "status": "pending",
+      "status": "done",
       "createdAt": "2026-04-15T17:20:41.168Z"
     },
     {
@@ -302,5 +302,5 @@
     }
   ],
   "nextId": 32,
-  "ts": 1776360280049
+  "ts": 1776360282119
 }
