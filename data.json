@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 32,
+      "cliente": "ITURAN",
+      "acao": "Fup Cristiane assinatura NDA",
+      "prioridade": "media",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-17T13:56:49.269Z"
+    },
+    {
       "id": 31,
       "cliente": "PORTO SEGURO",
       "acao": "Agenda com a Viviane Carvalho",
@@ -301,6 +311,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 32,
-  "ts": 1776421563056
+  "nextId": 33,
+  "ts": 1776434209671
 }
