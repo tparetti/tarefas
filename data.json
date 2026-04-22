@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 44,
+      "cliente": "YDUQS",
+      "acao": "Agendar data kickoff com Ana Rosa presencial no RJ",
+      "prioridade": "media",
+      "prazo": "2026-04-28",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T14:11:46.712Z"
+    },
+    {
       "id": 43,
       "cliente": "MOVIDA",
       "acao": "Fup Zuza, alinhamento iniciativas projetos atuais e inicio negociacal full cx",
@@ -421,6 +431,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 44,
-  "ts": 1776852583341
+  "nextId": 45,
+  "ts": 1776867107115
 }
