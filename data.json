@@ -245,8 +245,8 @@
       "cliente": "YDUQS",
       "acao": "Devolutiva material agenda Diego - URA performance",
       "prioridade": "media",
-      "prazo": "2026-04-12",
-      "prazoLabel": "Alvo 12/04",
+      "prazo": "2026-04-22",
+      "prazoLabel": "Alvo 22/04",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
     },
@@ -352,5 +352,5 @@
     }
   ],
   "nextId": 37,
-  "ts": 1776852255296
+  "ts": 1776852266020
 }
