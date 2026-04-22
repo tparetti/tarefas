@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 35,
+      "cliente": "ITAU",
+      "acao": "enviar KPIs IA Gen para o Kleber",
+      "prioridade": "media",
+      "prazo": "2026-04-14",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:03:12.497Z"
+    },
+    {
       "id": 34,
       "cliente": "YDUQS",
       "acao": "Agendar com o Bob Kickoff interno do projeto Full Cx Retencao",
@@ -331,6 +341,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 35,
-  "ts": 1776685869115
+  "nextId": 36,
+  "ts": 1776852192900
 }
