@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 40,
+      "cliente": "SABESP",
+      "acao": "Fup com Poli, historico ruim ITX",
+      "prioridade": "media",
+      "prazo": "2026-04-23",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:06:26.778Z"
+    },
+    {
       "id": 39,
       "cliente": "ETIHAD",
       "acao": "Fup Senthil, proposta enviada",
@@ -381,6 +391,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 40,
-  "ts": 1776852365759
+  "nextId": 41,
+  "ts": 1776852387180
 }
