@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 43,
+      "cliente": "MOVIDA",
+      "acao": "Fup Zuza, alinhamento iniciativas projetos atuais e inicio negociacal full cx",
+      "prioridade": "media",
+      "prazo": "2026-04-28",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:09:42.939Z"
+    },
+    {
       "id": 42,
       "cliente": "COGNA",
       "acao": "FUP Raphael Seglia - alinhamento pendencias",
@@ -411,6 +421,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 43,
-  "ts": 1776852524772
+  "nextId": 44,
+  "ts": 1776852583341
 }
