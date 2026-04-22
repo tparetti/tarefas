@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 37,
+      "cliente": "ITURAN",
+      "acao": "visita cliente em 23/04",
+      "prioridade": "media",
+      "prazo": "2026-04-23",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:05:21.615Z"
+    },
+    {
       "id": 36,
       "cliente": "AEGEA",
       "acao": "enviar as consideracoes da minuta padrao deles",
@@ -351,6 +361,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 37,
-  "ts": 1776852271943
+  "nextId": 38,
+  "ts": 1776852322017
 }
