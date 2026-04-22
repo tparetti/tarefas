@@ -147,7 +147,7 @@
       "prioridade": "media",
       "prazo": "2026-04-07",
       "prazoLabel": "Vence em 1d (07/04)",
-      "status": "pending",
+      "status": "done",
       "createdAt": "2026-04-09T09:00:00Z"
     },
     {
@@ -352,5 +352,5 @@
     }
   ],
   "nextId": 37,
-  "ts": 1776852245125
+  "ts": 1776852248457
 }
