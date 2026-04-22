@@ -15,7 +15,7 @@
       "cliente": "ITAU",
       "acao": "enviar KPIs IA Gen para o Kleber",
       "prioridade": "media",
-      "prazo": "2026-04-14",
+      "prazo": "2026-04-22",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-22T10:03:12.497Z"
@@ -352,5 +352,5 @@
     }
   ],
   "nextId": 37,
-  "ts": 1776852217044
+  "ts": 1776852227710
 }
