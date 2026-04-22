@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 36,
+      "cliente": "AEGEA",
+      "acao": "enviar as consideracoes da minuta padrao deles",
+      "prioridade": "media",
+      "prazo": "2026-04-22",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:03:36.642Z"
+    },
+    {
       "id": 35,
       "cliente": "ITAU",
       "acao": "enviar KPIs IA Gen para o Kleber",
@@ -341,6 +351,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 36,
-  "ts": 1776852192900
+  "nextId": 37,
+  "ts": 1776852217044
 }
