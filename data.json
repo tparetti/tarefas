@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 41,
+      "cliente": "PORTO SEGURO",
+      "acao": "Agenda com Viviane Carvalho homologacao IA Gen",
+      "prioridade": "media",
+      "prazo": "2026-04-27",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-22T10:08:15.819Z"
+    },
+    {
       "id": 40,
       "cliente": "SABESP",
       "acao": "Fup com Poli, historico ruim ITX",
@@ -391,6 +401,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 41,
-  "ts": 1776852387180
+  "nextId": 42,
+  "ts": 1776852496222
 }
