@@ -35,7 +35,7 @@
       "cliente": "CASAS BAHIA",
       "acao": "Fup Bob, status POC IAM - DDD31",
       "prioridade": "media",
-      "prazo": "2026-04-14",
+      "prazo": "2026-04-22",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-17T13:58:43.168Z"
@@ -352,5 +352,5 @@
     }
   ],
   "nextId": 37,
-  "ts": 1776852232976
+  "ts": 1776852241060
 }
