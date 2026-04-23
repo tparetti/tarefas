@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 49,
+      "cliente": "RECOVERY",
+      "acao": "responder e-mail reajuste",
+      "prioridade": "media",
+      "prazo": "2026-04-23",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-23T20:12:29.808Z"
+    },
+    {
       "id": 48,
       "cliente": "ITURAN",
       "acao": "Enviar ATA da agenda e checklist com as infos para assessment",
@@ -471,6 +481,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 49,
-  "ts": 1776975136315
+  "nextId": 50,
+  "ts": 1776975150211
 }
