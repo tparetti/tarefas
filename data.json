@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 46,
+      "cliente": "SERASA EXPERIAN",
+      "acao": "Agendar reuniao com o Rodrigo Avi - cobrança",
+      "prioridade": "media",
+      "prazo": "2026-04-28",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-23T11:52:02.615Z"
+    },
+    {
       "id": 45,
       "cliente": "COGNA",
       "acao": "Agendar reuniao com Ferrari - jornada aquisicao",
@@ -441,6 +451,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 46,
-  "ts": 1776945090372
+  "nextId": 47,
+  "ts": 1776945123018
 }
