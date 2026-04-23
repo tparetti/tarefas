@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 45,
+      "cliente": "COGNA",
+      "acao": "Agendar reuniao com Ferrari - jornada aquisicao",
+      "prioridade": "media",
+      "prazo": "2026-04-28",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-23T11:51:29.969Z"
+    },
+    {
       "id": 44,
       "cliente": "YDUQS",
       "acao": "Agendar data kickoff com Ana Rosa presencial no RJ",
@@ -431,6 +441,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 45,
-  "ts": 1776944691462
+  "nextId": 46,
+  "ts": 1776945090372
 }
