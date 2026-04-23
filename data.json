@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 47,
+      "cliente": "EMS",
+      "acao": "Enviar apresentacao e atualizacao da proposta",
+      "prioridade": "media",
+      "prazo": "2026-04-23",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-23T20:11:56.716Z"
+    },
+    {
       "id": 46,
       "cliente": "SERASA EXPERIAN",
       "acao": "Agendar reuniao com o Rodrigo Avi - cobrança",
@@ -451,6 +461,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 47,
-  "ts": 1776945123018
+  "nextId": 48,
+  "ts": 1776975117119
 }
