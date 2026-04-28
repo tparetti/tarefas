@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 53,
+      "cliente": "CRUZEIRO DO SUL",
+      "acao": "Fup Eduardo Fano Full",
+      "prioridade": "media",
+      "prazo": "2026-04-27",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-28T10:41:45.061Z"
+    },
+    {
       "id": 52,
       "cliente": "PORTO SEGURO",
       "acao": "Agenda levar Alessio e pegar as gravacoes",
@@ -511,6 +521,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 53,
-  "ts": 1777372770007
+  "nextId": 54,
+  "ts": 1777372905463
 }
