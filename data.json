@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 54,
+      "cliente": "IGEOC",
+      "acao": "preencher planilha de inscricao evento 10/06",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-28T12:28:40.251Z"
+    },
+    {
       "id": 53,
       "cliente": "CRUZEIRO DO SUL",
       "acao": "Fup Eduardo Fano Full",
@@ -521,6 +531,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 54,
-  "ts": 1777373538572
+  "nextId": 55,
+  "ts": 1777379320653
 }
