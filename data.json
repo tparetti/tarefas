@@ -133,7 +133,7 @@
     {
       "id": 40,
       "cliente": "SABESP",
-      "acao": "Fup com Poli, historico ruim ITX",
+      "acao": "Fup com Poli, historico ruim ITX - Cezar alinhar com o Guilherme",
       "prioridade": "media",
       "prazo": "2026-04-23",
       "prazoLabel": "",
@@ -522,5 +522,5 @@
     }
   ],
   "nextId": 54,
-  "ts": 1777372905463
+  "ts": 1777373538572
 }
