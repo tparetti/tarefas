@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 59,
+      "cliente": "GRUPO AVENIDA",
+      "acao": "alinhamento cliente mailling / ticket medio",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-29T23:41:28.313Z"
+    },
+    {
       "id": 58,
       "cliente": "MERCANTIL",
       "acao": "Fup implantacao projeto cobranca",
@@ -571,6 +581,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 59,
-  "ts": 1777506074883
+  "nextId": 60,
+  "ts": 1777506088715
 }
