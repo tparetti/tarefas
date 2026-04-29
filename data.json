@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 56,
+      "cliente": "ETIHAD",
+      "acao": "enviar proposta atualizada IVR",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-29T23:40:13.654Z"
+    },
+    {
       "id": 55,
       "cliente": "YDUQS",
       "acao": "enviar proposta do Talkdesk performance",
@@ -541,6 +551,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 56,
-  "ts": 1777506007802
+  "nextId": 57,
+  "ts": 1777506014058
 }
