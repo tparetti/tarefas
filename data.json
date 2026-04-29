@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 55,
+      "cliente": "YDUQS",
+      "acao": "enviar proposta do Talkdesk performance",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-29T23:40:07.400Z"
+    },
+    {
       "id": 54,
       "cliente": "IGEOC",
       "acao": "preencher planilha de inscricao evento 10/06",
@@ -531,6 +541,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 55,
-  "ts": 1777402884240
+  "nextId": 56,
+  "ts": 1777506007802
 }
