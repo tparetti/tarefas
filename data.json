@@ -65,7 +65,7 @@
       "cliente": "YDUQS",
       "acao": "enviar proposta do Talkdesk performance",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:40:07.400Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548783640
+  "ts": 1777548792413
 }
