@@ -55,7 +55,7 @@
       "cliente": "ETIHAD",
       "acao": "enviar proposta atualizada IVR",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:40:13.654Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548721720
+  "ts": 1777548746991
 }
