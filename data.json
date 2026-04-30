@@ -3,7 +3,7 @@
     {
       "id": 67,
       "cliente": "ORACLE",
-      "acao": "envio proposta parceria Yduqs Full CX",
+      "acao": "enviar proposta Luiz parceria Yduqs Full CX",
       "prioridade": "media",
       "prazo": "2026-04-30",
       "prazoLabel": "",
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777550676970
+  "ts": 1777550819184
 }
