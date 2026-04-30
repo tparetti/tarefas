@@ -35,7 +35,7 @@
       "cliente": "MERCANTIL",
       "acao": "Fup implantacao projeto cobranca",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:41:14.481Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548756159
+  "ts": 1777548765549
 }
