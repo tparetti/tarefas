@@ -1,16 +1,6 @@
 {
   "tasks": [
     {
-      "id": 67,
-      "cliente": "ORACLE",
-      "acao": "enviar proposta Luiz parceria Yduqs Full CX",
-      "prioridade": "media",
-      "prazo": "2026-04-30",
-      "prazoLabel": "",
-      "status": "pending",
-      "createdAt": "2026-04-30T12:04:36.567Z"
-    },
-    {
       "id": 61,
       "cliente": "COGNA",
       "acao": "retorno Sarah WhatsApp franqueados",
@@ -19,6 +9,16 @@
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T11:32:01.318Z"
+    },
+    {
+      "id": 67,
+      "cliente": "ORACLE",
+      "acao": "enviar proposta Luiz parceria Yduqs Full CX",
+      "prioridade": "media",
+      "prazo": "2026-04-30",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T12:04:36.567Z"
     },
     {
       "id": 66,
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777550953634
+  "ts": 1777550956331
 }
