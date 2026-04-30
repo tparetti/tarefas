@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 69,
+      "cliente": "INTERVALOR",
+      "acao": "analise de todos os contratos modelo fixo",
+      "prioridade": "media",
+      "prazo": "2026-04-30",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T13:03:32.574Z"
+    },
+    {
       "id": 68,
       "cliente": "C&A",
       "acao": "Fup Filipe minuta contrato - margem",
@@ -671,6 +681,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 69,
-  "ts": 1777554155480
+  "nextId": 70,
+  "ts": 1777554212977
 }
