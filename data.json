@@ -31,16 +31,6 @@
       "createdAt": "2026-04-30T12:03:04.897Z"
     },
     {
-      "id": 65,
-      "cliente": "GOL",
-      "acao": "preparar material agenda Marcos (IAM + URA Zoom)",
-      "prioridade": "media",
-      "prazo": "2026-05-12",
-      "prazoLabel": "",
-      "status": "pending",
-      "createdAt": "2026-04-30T11:59:10.959Z"
-    },
-    {
       "id": 64,
       "cliente": "ITURAN",
       "acao": "fup Cristiane, preenchimento Checklist agendamento Barra Funda",
@@ -119,6 +109,16 @@
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:40:13.654Z"
+    },
+    {
+      "id": 65,
+      "cliente": "GOL",
+      "acao": "preparar material agenda Marcos (IAM + URA Zoom)",
+      "prioridade": "media",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T11:59:10.959Z"
     },
     {
       "id": 55,
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777550956331
+  "ts": 1777550961107
 }
