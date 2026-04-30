@@ -478,9 +478,8 @@ function wireDragAndDrop(){
 
 function onDragStart(e){
   if(sortMode!=='manual'){
-    e.preventDefault();
-    alert('Para arrastar tarefas, selecione a ordenação "Manual" no topo da lista.');
-    return false;
+    sortMode='manual';
+    document.querySelectorAll('.sort-btn').forEach(function(x){x.classList.toggle('active',x.dataset.sort==='manual')});
   }
   _dragId=parseInt(this.dataset.id);
   this.classList.add('dragging');
