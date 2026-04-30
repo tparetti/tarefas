@@ -15,7 +15,7 @@
       "cliente": "RODOBENS",
       "acao": "proposta IAM",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T00:33:59.014Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548775312
+  "ts": 1777548783640
 }
