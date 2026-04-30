@@ -25,7 +25,7 @@
       "cliente": "GRUPO AVENIDA",
       "acao": "alinhamento cliente mailling / ticket medio",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:41:28.313Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548765549
+  "ts": 1777548775312
 }
