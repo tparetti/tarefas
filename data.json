@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 60,
+      "cliente": "RODOBENS",
+      "acao": "proposta IAM",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T00:33:59.014Z"
+    },
+    {
       "id": 59,
       "cliente": "GRUPO AVENIDA",
       "acao": "alinhamento cliente mailling / ticket medio",
@@ -581,6 +591,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 60,
-  "ts": 1777509217631
+  "nextId": 61,
+  "ts": 1777509239416
 }
