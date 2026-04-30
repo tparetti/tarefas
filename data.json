@@ -74,8 +74,8 @@
       "id": 54,
       "cliente": "IGEOC",
       "acao": "preencher planilha de inscricao evento 10/06",
-      "prioridade": "media",
-      "prazo": "2026-05-06",
+      "prioridade": "baixa",
+      "prazo": "2026-04-29",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-28T12:28:40.251Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548800394
+  "ts": 1777548810758
 }
