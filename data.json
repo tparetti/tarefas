@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 66,
+      "cliente": "BANCO PAN",
+      "acao": "fup processo assinatura aditivo, agendar kickoff do projeto",
+      "prioridade": "media",
+      "prazo": "2026-04-30",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T12:03:04.897Z"
+    },
+    {
       "id": 65,
       "cliente": "GOL",
       "acao": "preparar material agenda Marcos (IAM + URA Zoom)",
@@ -641,6 +651,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 66,
-  "ts": 1777550351362
+  "nextId": 67,
+  "ts": 1777550585299
 }
