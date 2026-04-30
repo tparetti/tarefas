@@ -420,7 +420,7 @@ function render(){
       duePill='<span class="pill '+cls2+'">⏰ '+txt+'</span>';
     }
     var title=esc(t.cliente)+' — '+esc(t.acao);
-    html+='<div class="task '+(t.status==='done'?'done':'')+'" data-id="'+t.id+'" draggable="true">'
+    html+='<div class="task '+(t.status==='done'?'done':'')+'" data-id="'+t.id+'" draggable="true" ondblclick="openEdit('+t.id+')">'
       +'<span class="drag-handle" title="Arraste para reordenar">⋮⋮</span>'
       +'<div class="checkbox" onclick="toggleDone('+t.id+')"></div>'
       +'<div class="task-body">'
