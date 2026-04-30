@@ -111,16 +111,6 @@
       "createdAt": "2026-04-29T23:40:13.654Z"
     },
     {
-      "id": 65,
-      "cliente": "GOL",
-      "acao": "preparar material agenda Marcos (IAM + URA Zoom)",
-      "prioridade": "media",
-      "prazo": "2026-05-12",
-      "prazoLabel": "",
-      "status": "pending",
-      "createdAt": "2026-04-30T11:59:10.959Z"
-    },
-    {
       "id": 55,
       "cliente": "YDUQS",
       "acao": "enviar proposta do Talkdesk performance",
@@ -229,6 +219,16 @@
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-23T11:51:29.969Z"
+    },
+    {
+      "id": 65,
+      "cliente": "GOL",
+      "acao": "preparar material agenda Marcos (IAM + URA Zoom)",
+      "prioridade": "media",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T11:59:10.959Z"
     },
     {
       "id": 44,
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777550967257
+  "ts": 1777550971364
 }
