@@ -57,7 +57,7 @@
       "prioridade": "media",
       "prazo": "2026-04-30",
       "prazoLabel": "",
-      "status": "pending",
+      "status": "done",
       "createdAt": "2026-04-30T12:03:04.897Z"
     },
     {
@@ -682,5 +682,5 @@
     }
   ],
   "nextId": 70,
-  "ts": 1777584729873
+  "ts": 1777586431817
 }
