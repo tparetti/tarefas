@@ -11,6 +11,16 @@
       "createdAt": "2026-04-30T12:04:36.567Z"
     },
     {
+      "id": 61,
+      "cliente": "COGNA",
+      "acao": "retorno Sarah WhatsApp franqueados",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T11:32:01.318Z"
+    },
+    {
       "id": 66,
       "cliente": "BANCO PAN",
       "acao": "fup processo assinatura aditivo, agendar kickoff do projeto",
@@ -59,16 +69,6 @@
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T11:35:28.653Z"
-    },
-    {
-      "id": 61,
-      "cliente": "COGNA",
-      "acao": "retorno Sarah WhatsApp franqueados",
-      "prioridade": "media",
-      "prazo": "2026-04-29",
-      "prazoLabel": "",
-      "status": "pending",
-      "createdAt": "2026-04-30T11:32:01.318Z"
     },
     {
       "id": 60,
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777550819184
+  "ts": 1777550953634
 }
