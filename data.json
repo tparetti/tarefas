@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 62,
+      "cliente": "NEOENERGIA",
+      "acao": "formalizar data entrega multiskill",
+      "prioridade": "media",
+      "prazo": "2026-04-29",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-30T11:35:28.653Z"
+    },
+    {
       "id": 61,
       "cliente": "COGNA",
       "acao": "retorno Sarah WhatsApp franqueados",
@@ -601,6 +611,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 62,
-  "ts": 1777548894866
+  "nextId": 63,
+  "ts": 1777548929056
 }
