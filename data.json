@@ -195,7 +195,7 @@
       "cliente": "COGNA",
       "acao": "FUP Raphael Seglia - alinhamento pendencias",
       "prioridade": "media",
-      "prazo": "2026-04-27",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-22T10:08:44.370Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548859211
+  "ts": 1777548867100
 }
