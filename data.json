@@ -45,7 +45,7 @@
       "cliente": "COPEL",
       "acao": "atualizacao proposta Watchdoc",
       "prioridade": "media",
-      "prazo": "2026-04-29",
+      "prazo": "2026-04-30",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-29T23:40:55.596Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548746991
+  "ts": 1777548756159
 }
