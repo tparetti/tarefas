@@ -215,7 +215,7 @@
       "cliente": "SABESP",
       "acao": "Fup com Poli, historico ruim ITX - Cezar alinhar com o Guilherme",
       "prioridade": "media",
-      "prazo": "2026-04-30",
+      "prazo": "2026-04-23",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-22T10:06:26.778Z"
@@ -475,7 +475,7 @@
       "cliente": "NEOENERGIA",
       "acao": "Agendar almoço Evani semana 13/4",
       "prioridade": "media",
-      "prazo": "2026-04-28",
+      "prazo": "2026-05-07",
       "prazoLabel": "Alvo 13/04",
       "status": "pending",
       "createdAt": "2026-04-09T09:00:00Z"
@@ -602,5 +602,5 @@
     }
   ],
   "nextId": 62,
-  "ts": 1777548875559
+  "ts": 1777548882959
 }
