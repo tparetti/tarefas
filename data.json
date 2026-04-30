@@ -11,6 +11,16 @@
       "createdAt": "2026-04-30T11:32:01.318Z"
     },
     {
+      "id": 56,
+      "cliente": "ETIHAD",
+      "acao": "enviar proposta atualizada IVR",
+      "prioridade": "alta",
+      "prazo": "2026-04-30",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-04-29T23:40:13.654Z"
+    },
+    {
       "id": 67,
       "cliente": "ORACLE",
       "acao": "enviar proposta Luiz parceria Yduqs Full CX",
@@ -59,16 +69,6 @@
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T11:35:28.653Z"
-    },
-    {
-      "id": 56,
-      "cliente": "ETIHAD",
-      "acao": "enviar proposta atualizada IVR",
-      "prioridade": "alta",
-      "prazo": "2026-04-30",
-      "prazoLabel": "",
-      "status": "pending",
-      "createdAt": "2026-04-29T23:40:13.654Z"
     },
     {
       "id": 60,
@@ -662,5 +662,5 @@
     }
   ],
   "nextId": 68,
-  "ts": 1777551461432
+  "ts": 1777551468064
 }
