@@ -227,6 +227,7 @@ function showSync(s){
 
 function scheduleSave(){
   if(!_loaded){console.log('Save blocked - not loaded yet');return}
+  state.ts=Date.now();
   clearTimeout(_saveTimer);
   showSync('saving');
   _saveTimer=setTimeout(saveToCloud,400);
@@ -288,7 +289,13 @@ function loadFromCloud(silent){
       try{
         var raw=decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))));
         var data=JSON.parse(raw);
-        // Always trust remote as source of truth on load
+        // Skip overwrite if local has newer edits (pending save or save just landed)
+        var localTs=(state&&state.ts)||0;
+        var remoteTs=(data&&data.ts)||0;
+        if(_loaded && localTs>remoteTs){
+          showSync('ok');
+          return;
+        }
         state=data;
         if(!state.tasks)state.tasks=[];
         if(!state.nextId)state.nextId=1;
