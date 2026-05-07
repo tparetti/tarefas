@@ -195,19 +195,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <script>
-// ============ CLOUD SYNC via GitHub API ============
-var GH_REPO='tparetti/tarefas';
-var GH_FILE='data.json';
-var GH_BRANCH='main';
-var GH_API='https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE;
-var GH_RAW='https://raw.githubusercontent.com/'+GH_REPO+'/'+GH_BRANCH+'/'+GH_FILE;
-function ghToken(){return localStorage.getItem('gh_token')||''}
-function setGhToken(){
-  var cur=ghToken();
-  var t=prompt('Cole o GitHub Personal Access Token (fine-grained, contents:write em '+GH_REPO+'). Fica salvo só neste navegador, não vai pro repo.',cur);
-  if(t!==null){localStorage.setItem('gh_token',t.trim());_fileSha=null;showSync('ok');}
-}
-var _fileSha=null;
+// ============ CLOUD SYNC via Cloudflare Worker ============
+var WORKER_URL='https://tparetti-apps.thiago-paretti.workers.dev/v1/tarefas/state';
 var _syncing=false;
 var _saveTimer=null;
 
@@ -241,48 +230,25 @@ function scheduleSave(){
 
 function saveToCloud(){
   if(!_loaded){console.log('Save aborted - not loaded');return}
-  var tk=ghToken();
-  if(!tk){showSync('err');alert('Token do GitHub não configurado. Clique no botão de sync e cole seu PAT.');return}
   state.ts=Date.now();
   try{localStorage.setItem('tarefas_data',JSON.stringify(state))}catch(e){}
-  if(!_fileSha){
-    fetch(GH_API,{headers:{'Authorization':'Bearer '+tk}})
-      .then(function(r){return r.json()})
-      .then(function(d){_fileSha=d.sha||null;doSave()})
-      .catch(function(){doSave()});
-  }else{doSave()}
-}
-
-function doSave(){
-  var tk=ghToken();
-  if(!tk){showSync('err');return}
-  var content=btoa(unescape(encodeURIComponent(JSON.stringify(state,null,2))));
-  var body={message:'update tasks',content:content,branch:GH_BRANCH};
-  if(_fileSha)body.sha=_fileSha;
-  fetch(GH_API,{
+  fetch(WORKER_URL,{
     method:'PUT',
-    headers:{'Authorization':'Bearer '+tk,'Content-Type':'application/json'},
-    body:JSON.stringify(body)
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(state)
   }).then(function(r){
     if(!r.ok)throw new Error('HTTP '+r.status);
-    return r.json();
-  }).then(function(d){
-    if(d.content)_fileSha=d.content.sha;
     showSync('ok');
   }).catch(function(e){
     console.log('Save error',e);
-    if(e.message && (e.message.indexOf('409')>-1||e.message.indexOf('422')>-1)){
-      _fileSha=null;
-      setTimeout(saveToCloud,800);
-    }else{showSync('err')}
+    showSync('err');
   });
 }
 
 function loadFromCloud(silent){
   if(_syncing)return;_syncing=true;
   if(!silent)showSync('loading');
-  // Leitura anônima via raw URL (repo público, sem token, sem rate limit problema)
-  fetch(GH_RAW+'?ts='+Date.now(),{cache:'no-store'})
+  fetch(WORKER_URL+'?ts='+Date.now(),{cache:'no-store'})
     .then(function(r){
       if(!r.ok)throw new Error('HTTP '+r.status);
       return r.text();
@@ -303,18 +269,7 @@ function loadFromCloud(silent){
         localStorage.setItem('tarefas_data',JSON.stringify(state));
         _loaded=true;
         render();
-        // Se já temos token, busca o sha pra acelerar primeiro save
-        var tk=ghToken();
-        if(tk && !_fileSha){
-          fetch(GH_API,{headers:{'Authorization':'Bearer '+tk}})
-            .then(function(r){return r.ok?r.json():null})
-            .then(function(d){if(d&&d.sha)_fileSha=d.sha});
-        }
-        showSync(tk?'ok':'err');
-        if(!tk){
-          var lbl=document.getElementById('syncLabel');
-          if(lbl)lbl.textContent='✗ Configure o token (clique aqui)';
-        }
+        showSync('ok');
       }catch(e){console.log('Parse',e);showSync('err')}
     }).catch(function(e){
       _syncing=false;
@@ -325,7 +280,6 @@ function loadFromCloud(silent){
 }
 
 function forceSync(){
-  if(!ghToken()){setGhToken();if(!ghToken())return}
   saveToCloud();
   setTimeout(function(){loadFromCloud(false)},700);
 }
