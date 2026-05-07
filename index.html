@@ -198,8 +198,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 // ============ CLOUD SYNC via GitHub API ============
 var GH_REPO='tparetti/tarefas';
 var GH_FILE='data.json';
-var GH_TK=['ghp','_a6bwhyP','8twuUU3y1','TyEo7xZq4RdO','iQ3rTOMo'].join('');
+var GH_BRANCH='main';
 var GH_API='https://api.github.com/repos/'+GH_REPO+'/contents/'+GH_FILE;
+var GH_RAW='https://raw.githubusercontent.com/'+GH_REPO+'/'+GH_BRANCH+'/'+GH_FILE;
+function ghToken(){return localStorage.getItem('gh_token')||''}
+function setGhToken(){
+  var cur=ghToken();
+  var t=prompt('Cole o GitHub Personal Access Token (fine-grained, contents:write em '+GH_REPO+'). Fica salvo só neste navegador, não vai pro repo.',cur);
+  if(t!==null){localStorage.setItem('gh_token',t.trim());_fileSha=null;showSync('ok');}
+}
 var _fileSha=null;
 var _syncing=false;
 var _saveTimer=null;
@@ -234,10 +241,12 @@ function scheduleSave(){
 
 function saveToCloud(){
   if(!_loaded){console.log('Save aborted - not loaded');return}
+  var tk=ghToken();
+  if(!tk){showSync('err');alert('Token do GitHub não configurado. Clique no botão de sync e cole seu PAT.');return}
   state.ts=Date.now();
   try{localStorage.setItem('tarefas_data',JSON.stringify(state))}catch(e){}
   if(!_fileSha){
-    fetch(GH_API,{headers:{'Authorization':'Bearer '+GH_TK}})
+    fetch(GH_API,{headers:{'Authorization':'Bearer '+tk}})
       .then(function(r){return r.json()})
       .then(function(d){_fileSha=d.sha||null;doSave()})
       .catch(function(){doSave()});
@@ -245,12 +254,14 @@ function saveToCloud(){
 }
 
 function doSave(){
+  var tk=ghToken();
+  if(!tk){showSync('err');return}
   var content=btoa(unescape(encodeURIComponent(JSON.stringify(state,null,2))));
-  var body={message:'update tasks',content:content};
+  var body={message:'update tasks',content:content,branch:GH_BRANCH};
   if(_fileSha)body.sha=_fileSha;
   fetch(GH_API,{
     method:'PUT',
-    headers:{'Authorization':'Bearer '+GH_TK,'Content-Type':'application/json'},
+    headers:{'Authorization':'Bearer '+tk,'Content-Type':'application/json'},
     body:JSON.stringify(body)
   }).then(function(r){
     if(!r.ok)throw new Error('HTTP '+r.status);
@@ -270,49 +281,54 @@ function doSave(){
 function loadFromCloud(silent){
   if(_syncing)return;_syncing=true;
   if(!silent)showSync('loading');
-  fetch(GH_API+'?ts='+Date.now(),{headers:{'Authorization':'Bearer '+GH_TK}})
+  // Leitura anônima via raw URL (repo público, sem token, sem rate limit problema)
+  fetch(GH_RAW+'?ts='+Date.now(),{cache:'no-store'})
     .then(function(r){
       if(!r.ok)throw new Error('HTTP '+r.status);
-      return r.json();
+      return r.text();
     })
-    .then(function(d){
+    .then(function(raw){
       _syncing=false;
-      if(d.sha)_fileSha=d.sha;
-      if(!d.content){
-        // Empty remote - use local if we have any, otherwise start fresh
-        _loaded=true;
-        render();
-        showSync('ok');
-        return;
+      if(!raw){
+        _loaded=true;render();showSync('ok');return;
       }
       try{
-        var raw=decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))));
         var data=JSON.parse(raw);
-        // Skip overwrite if local has newer edits (pending save or save just landed)
         var localTs=(state&&state.ts)||0;
         var remoteTs=(data&&data.ts)||0;
-        if(_loaded && localTs>remoteTs){
-          showSync('ok');
-          return;
-        }
+        if(_loaded && localTs>remoteTs){showSync('ok');return}
         state=data;
         if(!state.tasks)state.tasks=[];
         if(!state.nextId)state.nextId=1;
         localStorage.setItem('tarefas_data',JSON.stringify(state));
         _loaded=true;
         render();
-        showSync('ok');
+        // Se já temos token, busca o sha pra acelerar primeiro save
+        var tk=ghToken();
+        if(tk && !_fileSha){
+          fetch(GH_API,{headers:{'Authorization':'Bearer '+tk}})
+            .then(function(r){return r.ok?r.json():null})
+            .then(function(d){if(d&&d.sha)_fileSha=d.sha});
+        }
+        showSync(tk?'ok':'err');
+        if(!tk){
+          var lbl=document.getElementById('syncLabel');
+          if(lbl)lbl.textContent='✗ Configure o token (clique aqui)';
+        }
       }catch(e){console.log('Parse',e);showSync('err')}
     }).catch(function(e){
       _syncing=false;
       console.log('Load error',e);
       showSync('err');
-      // Retry automatically in 5s
       setTimeout(function(){if(!_loaded)loadFromCloud(true)},5000);
     });
 }
 
-function forceSync(){saveToCloud();setTimeout(function(){loadFromCloud(false)},700)}
+function forceSync(){
+  if(!ghToken()){setGhToken();if(!ghToken())return}
+  saveToCloud();
+  setTimeout(function(){loadFromCloud(false)},700);
+}
 
 // DO NOT load from localStorage on startup - always fetch from cloud first
 // This prevents stale local state from overwriting remote data
