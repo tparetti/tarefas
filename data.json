@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 71,
+      "cliente": "MAPFRE",
+      "acao": "enviar contraproposta cobrança",
+      "prioridade": "alta",
+      "prazo": "2026-05-08",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-08T15:36:09.799Z"
+    },
+    {
       "id": 70,
       "cliente": "ITAU PJ",
       "acao": "Material agenda 11/05",
@@ -691,6 +701,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 71,
-  "ts": 1778243489375
+  "nextId": 72,
+  "ts": 1778254570202
 }
