@@ -245,7 +245,7 @@
       "cliente": "EMS",
       "acao": "Enviar apresentacao e atualizacao da proposta",
       "prioridade": "media",
-      "prazo": "2026-04-30",
+      "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-23T20:11:56.716Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493262283
+  "ts": 1778493276562
 }
