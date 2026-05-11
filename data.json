@@ -185,7 +185,7 @@
       "cliente": "CRUZEIRO DO SUL",
       "acao": "Fup Eduardo Fano Full",
       "prioridade": "media",
-      "prazo": "2026-04-30",
+      "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-28T10:41:45.061Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493296214
+  "ts": 1778493308350
 }
