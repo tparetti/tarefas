@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 74,
+      "cliente": "PORTO BANK",
+      "acao": "Preparar material agenda Adriano Arruda - jornada aquisicao",
+      "prioridade": "alta",
+      "prazo": "2026-05-13",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:57:28.035Z"
+    },
+    {
       "id": 73,
       "cliente": "ITURAN",
       "acao": "Fup Rita finalizaçao material checklist",
@@ -721,6 +731,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 74,
-  "ts": 1778493420689
+  "nextId": 75,
+  "ts": 1778493448440
 }
