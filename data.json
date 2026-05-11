@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 77,
+      "cliente": "ETIHAD",
+      "acao": "Fup Senthil, proposta consultoria IVR",
+      "prioridade": "alta",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:58:27.781Z"
+    },
+    {
       "id": 76,
       "cliente": "PORTO BANK",
       "acao": "Fup Ana Igreja, agenda com Alessio - jornada cobrança",
@@ -751,6 +761,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 77,
-  "ts": 1778493479445
+  "nextId": 78,
+  "ts": 1778493508188
 }
