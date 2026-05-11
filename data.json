@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 73,
+      "cliente": "ITURAN",
+      "acao": "Fup Rita finalizaçao material checklist",
+      "prioridade": "alta",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:57:00.284Z"
+    },
+    {
       "id": 72,
       "cliente": "VIBRA",
       "acao": "Fup Liliane projeto IAM - e-mail",
@@ -711,6 +721,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 73,
-  "ts": 1778493376433
+  "nextId": 74,
+  "ts": 1778493420689
 }
