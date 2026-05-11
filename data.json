@@ -45,7 +45,7 @@
       "cliente": "C&A",
       "acao": "Fup Filipe minuta contrato - margem",
       "prioridade": "media",
-      "prazo": "2026-04-30",
+      "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T13:02:35.076Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493276562
+  "ts": 1778493286402
 }
