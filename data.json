@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 72,
+      "cliente": "VIBRA",
+      "acao": "Fup Liliane projeto IAM - e-mail",
+      "prioridade": "alta",
+      "prazo": "2026-05-11",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:54:21.879Z"
+    },
+    {
       "id": 71,
       "cliente": "MAPFRE",
       "acao": "enviar contraproposta cobrança",
@@ -701,6 +711,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 72,
-  "ts": 1778254596529
+  "nextId": 73,
+  "ts": 1778493262283
 }
