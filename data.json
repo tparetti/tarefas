@@ -255,7 +255,7 @@
       "cliente": "SERASA EXPERIAN",
       "acao": "Agendar reuniao com o Rodrigo Avi - cobrança",
       "prioridade": "baixa",
-      "prazo": "2026-04-30",
+      "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-23T11:52:02.615Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493308350
+  "ts": 1778493318923
 }
