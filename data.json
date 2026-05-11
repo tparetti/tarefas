@@ -35,7 +35,7 @@
       "cliente": "INTERVALOR",
       "acao": "analise de todos os contratos modelo fixo",
       "prioridade": "media",
-      "prazo": "2026-05-08",
+      "prazo": "2026-05-15",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-30T13:03:32.574Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493351925
+  "ts": 1778493361180
 }
