@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 80,
+      "cliente": "CASAS BAHIA",
+      "acao": "Fup Gisele, validacao escopo para start POC IAM Classificador",
+      "prioridade": "alta",
+      "prazo": "2026-05-11",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:59:51.667Z"
+    },
+    {
       "id": 79,
       "cliente": "RODOBENS",
       "acao": "Fup proposta IAM, jornada consorcio moto",
@@ -781,6 +791,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 80,
-  "ts": 1778493561020
+  "nextId": 81,
+  "ts": 1778493592071
 }
