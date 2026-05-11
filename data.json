@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 78,
+      "cliente": "COGNA",
+      "acao": "Data implantacao POC IAM - Jornada retencao do aluno",
+      "prioridade": "alta",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:58:52.995Z"
+    },
+    {
       "id": 77,
       "cliente": "ETIHAD",
       "acao": "Fup Senthil, proposta consultoria IVR",
@@ -761,6 +771,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 78,
-  "ts": 1778493508188
+  "nextId": 79,
+  "ts": 1778493533400
 }
