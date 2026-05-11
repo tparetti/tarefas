@@ -228,6 +228,28 @@ function scheduleSave(){
   _saveTimer=setTimeout(saveToCloud,400);
 }
 
+// Save IMEDIATO — pra ações explícitas (clicar Salvar no modal, marcar concluída, etc.)
+function saveNow(){
+  if(!_loaded)return;
+  state.ts=Date.now();
+  clearTimeout(_saveTimer);
+  saveToCloud();
+}
+
+// Fail-safe: ao fechar/recarregar, garante que pending save sobe via sendBeacon (síncrono no unload)
+window.addEventListener('beforeunload',function(){
+  if(!_loaded)return;
+  if(_saveTimer){
+    // tem save pendente, força via sendBeacon antes do unload
+    clearTimeout(_saveTimer);
+    state.ts=Date.now();
+    try{
+      var blob=new Blob([JSON.stringify(state)],{type:'application/json'});
+      navigator.sendBeacon(WORKER_URL,blob);
+    }catch(e){}
+  }
+});
+
 function saveToCloud(){
   if(!_loaded){console.log('Save aborted - not loaded');return}
   state.ts=Date.now();
@@ -484,7 +506,7 @@ function onDrop(e){
   var insertAt=dropAbove?toIdx:toIdx+1;
   state.tasks.splice(insertAt,0,moved);
   render();
-  scheduleSave();
+  saveNow();
 }
 
 // ============ ACTIONS ============
@@ -515,7 +537,7 @@ function addTask(){
   var d=new Date();
   document.getElementById('newDate').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   render();
-  scheduleSave();
+  saveNow();
 }
 
 function toggleDone(id){
@@ -523,14 +545,14 @@ function toggleDone(id){
   if(!t)return;
   t.status=t.status==='done'?'pending':'done';
   render();
-  scheduleSave();
+  saveNow();
 }
 
 function delTask(id){
   if(!confirm('Excluir essa tarefa?'))return;
   state.tasks=state.tasks.filter(function(t){return t.id!==id});
   render();
-  scheduleSave();
+  saveNow();
 }
 
 function openEdit(id){
@@ -555,7 +577,7 @@ function saveEdit(){
   t.prazoLabel=document.getElementById('edLabel').value.trim();
   closeEdit();
   render();
-  scheduleSave();
+  saveNow();
 }
 
 // ============ WIRE UP ============
