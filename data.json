@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 79,
+      "cliente": "RODOBENS",
+      "acao": "Fup proposta IAM, jornada consorcio moto",
+      "prioridade": "alta",
+      "prazo": "2026-05-12",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T09:59:20.614Z"
+    },
+    {
       "id": 78,
       "cliente": "COGNA",
       "acao": "Data implantacao POC IAM - Jornada retencao do aluno",
@@ -771,6 +781,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 79,
-  "ts": 1778493533400
+  "nextId": 80,
+  "ts": 1778493561020
 }
