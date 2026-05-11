@@ -1,6 +1,16 @@
 {
   "tasks": [
     {
+      "id": 81,
+      "cliente": "CIELO",
+      "acao": "Fup Vitor Madeira, agenda apresentacao IAM time de TI",
+      "prioridade": "alta",
+      "prazo": "2026-05-11",
+      "prazoLabel": "",
+      "status": "pending",
+      "createdAt": "2026-05-11T10:00:13.206Z"
+    },
+    {
       "id": 80,
       "cliente": "CASAS BAHIA",
       "acao": "Fup Gisele, validacao escopo para start POC IAM Classificador",
@@ -791,6 +801,6 @@
       "createdAt": "2026-04-08T08:00:00Z"
     }
   ],
-  "nextId": 81,
-  "ts": 1778493592071
+  "nextId": 82,
+  "ts": 1778493613611
 }
