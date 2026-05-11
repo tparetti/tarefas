@@ -4,7 +4,7 @@
       "id": 72,
       "cliente": "VIBRA",
       "acao": "Fup Liliane projeto IAM - e-mail",
-      "prioridade": "alta",
+      "prioridade": "media",
       "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493364332
+  "ts": 1778493376433
 }
