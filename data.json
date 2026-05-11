@@ -265,7 +265,7 @@
       "cliente": "COGNA",
       "acao": "Agendar reuniao com Ferrari - jornada aquisicao",
       "prioridade": "media",
-      "prazo": "2026-05-07",
+      "prazo": "2026-05-11",
       "prazoLabel": "",
       "status": "pending",
       "createdAt": "2026-04-23T11:51:29.969Z"
@@ -712,5 +712,5 @@
     }
   ],
   "nextId": 73,
-  "ts": 1778493323007
+  "ts": 1778493330742
 }
