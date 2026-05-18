@@ -356,8 +356,9 @@ function filtered(){
     var aDone=a.status==='done'?1:0;
     var bDone=b.status==='done'?1:0;
     if(aDone!==bDone)return aDone-bDone;
-    // PRIORIDADE
-    var pa=_prRank[a.prioridade]||9, pb=_prRank[b.prioridade]||9;
+    // PRIORIDADE (||9 não funciona pra alta=0 — JS trata 0 como falsy)
+    var pa=_prRank[a.prioridade];if(pa===undefined)pa=9;
+    var pb=_prRank[b.prioridade];if(pb===undefined)pb=9;
     if(pa!==pb)return pa-pb;
     // PRAZO (atrasadas naturalmente vêm primeiro pois prazo é mais antigo)
     var aT=a.prazo?parseDate(a.prazo).getTime():null;
