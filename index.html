@@ -152,7 +152,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 
   <div class="sort-row">
-    <span>🤖 Ordenação automática: atrasadas → prioridade (alta &gt; média &gt; baixa) → prazo</span>
+    <span>🤖 Ordenação automática: prioridade (alta &gt; média &gt; baixa) → prazo (mais antigo primeiro)</span>
   </div>
 
   <div class="add-row">
@@ -350,22 +350,18 @@ function filtered(){
   else if(filter==='late')list=list.filter(isLate);
   else if(filter==='high')list=list.filter(function(t){return t.prioridade==='alta' && t.status!=='done'});
 
-  // ordenação automática: atrasadas → prioridade → prazo
+  // ordenação automática: prioridade → prazo (concluídas no fim)
   var _prRank={alta:0,media:1,baixa:2};
-  var _today=today().getTime();
   list.sort(function(a,b){
     var aDone=a.status==='done'?1:0;
     var bDone=b.status==='done'?1:0;
     if(aDone!==bDone)return aDone-bDone;
-    var aT=a.prazo?parseDate(a.prazo).getTime():null;
-    var bT=b.prazo?parseDate(b.prazo).getTime():null;
-    var aLate=(aT!==null && aDone===0 && aT<_today)?0:1;
-    var bLate=(bT!==null && bDone===0 && bT<_today)?0:1;
-    if(aLate!==bLate)return aLate-bLate;
-    // PRIORIDADE primeiro
+    // PRIORIDADE
     var pa=_prRank[a.prioridade]||9, pb=_prRank[b.prioridade]||9;
     if(pa!==pb)return pa-pb;
-    // depois PRAZO
+    // PRAZO (atrasadas naturalmente vêm primeiro pois prazo é mais antigo)
+    var aT=a.prazo?parseDate(a.prazo).getTime():null;
+    var bT=b.prazo?parseDate(b.prazo).getTime():null;
     if(aT!==null && bT!==null){
       if(aT!==bT)return aT-bT;
     }else if(aT!==null){return -1}
