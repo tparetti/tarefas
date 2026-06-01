@@ -272,13 +272,18 @@ const cambioFor=ym=>{
 
 function sortRows(){state.rows.sort((a,b)=>a.data.localeCompare(b.data))}
 
-// Calcula variação do dia = (pat - patAnterior) - aporte + retirada
+// Variação do dia = pat - patAnterior (bruta, igual Excel)
 function computeVar(idx){
   const r=state.rows[idx];
   const prev=idx>0?state.rows[idx-1].patrimonio:state.base;
+  return r.patrimonio - prev;
+}
+// P&L de trading "limpo" do dia = bruta - aporte + retirada
+function computeTradingPL(idx){
+  const r=state.rows[idx];
   const aporte=r.tipo==='aporte'?(r.valor||0):0;
   const retirada=r.tipo==='retirada'?(r.valor||0):0;
-  return r.patrimonio - prev - aporte + retirada;
+  return computeVar(idx) - aporte + retirada;
 }
 
 function recomputeAllVars(){
@@ -292,7 +297,7 @@ function monthlyAgg(){
   state.rows.forEach((r,i)=>{
     const k=ymKey(r.data);
     if(!m[k])m[k]={pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:''};
-    m[k].pl+=r.var||0;
+    m[k].pl+=r.var||0;  // soma das variações brutas (igual Excel)
     if(r.tipo==='aporte')m[k].aporte+=r.valor||0;
     if(r.tipo==='retirada')m[k].retirada+=r.valor||0;
     if(r.data>m[k].dataFim){m[k].dataFim=r.data;m[k].patFim=r.patrimonio}
@@ -329,16 +334,18 @@ function renderKPIs(){
   document.getElementById('k-pat').textContent='US$ '+fmt(pat);
   document.getElementById('k-pat-brl').textContent='≈ R$ '+fmt(pat*camb)+' · câmbio '+camb.toFixed(2);
 
-  const totalPL=state.rows.reduce((s,r)=>s+(r.var||0),0);
+  const varBrutaAcum=state.rows.reduce((s,r)=>s+(r.var||0),0); // = pat_atual - pat_base
   const totalAp=state.rows.filter(r=>r.tipo==='aporte').reduce((s,r)=>s+(r.valor||0),0);
   const totalRet=state.rows.filter(r=>r.tipo==='retirada').reduce((s,r)=>s+(r.valor||0),0);
   const net=totalAp-totalRet;
+  // Resultado de trading "limpo" = variação patrimonial - aporte líquido
+  const tradingPL=varBrutaAcum-net;
   const baseInvest=state.base+net;
-  const plPct=baseInvest?totalPL/baseInvest*100:0;
+  const plPct=baseInvest?tradingPL/baseInvest*100:0;
   const e=document.getElementById('k-pl');
-  e.textContent=(totalPL>=0?'+':'')+'US$ '+fmt(Math.abs(totalPL));
-  e.className='val '+(totalPL>=0?'pos':'neg');
-  document.getElementById('k-pl-pct').textContent=fmtPct(plPct)+' · ≈ R$ '+fmt(Math.abs(totalPL)*camb);
+  e.textContent=(tradingPL>=0?'+':'')+'US$ '+fmt(Math.abs(tradingPL));
+  e.className='val '+(tradingPL>=0?'pos':'neg');
+  document.getElementById('k-pl-pct').textContent=fmtPct(plPct)+' · ≈ R$ '+fmt(Math.abs(tradingPL)*camb);
 
   document.getElementById('k-net').textContent=(net>=0?'+':'')+'US$ '+fmt(Math.abs(net));
   document.getElementById('k-net').className='val '+(net>=0?'ap':'ret');
