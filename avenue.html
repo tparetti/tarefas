@@ -304,19 +304,17 @@ function monthlyAgg(){
     if(r.data>m[k].dataFim){m[k].dataFim=r.data;m[k].patFim=r.patrimonio}
   });
   const keys=Object.keys(m).sort();
-  const lastYM=keys[keys.length-1];
   let prevFim=state.base;
   keys.forEach(k=>{
     m[k].patIni=prevFim;
-    // Prioridade: valor manual em state.plMensal (fonte Excel/Resumo) > cálculo limpo automático
-    // Mês corrente sempre é dinâmico (calculado)
+    // Sempre prioriza valor oficial em state.plMensal (Excel). Sem override → calcula limpo.
     const override = state.plMensal && state.plMensal[k];
-    if (override != null && k !== lastYM) {
+    if (override != null) {
       m[k].pl = override;
       m[k].src = 'excel';
     } else {
       m[k].pl = m[k].varBruta - m[k].aporte + m[k].retirada;
-      m[k].src = (k===lastYM ? 'calc-corrente' : 'calc');
+      m[k].src = 'calc';
     }
     prevFim=m[k].patFim;
   });
@@ -463,9 +461,9 @@ function renderMonthTable(){
     totalPL+=x.pl;totalAp+=x.aporte;totalRt+=x.retirada;
     const cl=x.pl>=0?'pos':'neg';
     const pct=x.patIni?x.pl/x.patIni*100:0;
-    const srcIcon = x.src==='excel' ? '<span title="Valor oficial do Excel" style="opacity:.5;cursor:pointer" onclick="editPLMensal(\''+k+'\')">📗</span>'
-                  : x.src==='calc-corrente' ? '<span title="Mês corrente — calculado dinâmico" style="opacity:.5">🔄</span>'
-                  : '<span title="Calculado" style="opacity:.5;cursor:pointer" onclick="editPLMensal(\''+k+'\')">⚙️</span>';
+    const srcIcon = x.src==='excel'
+      ? '<span title="Valor oficial · clique pra editar" style="opacity:.55;cursor:pointer" onclick="editPLMensal(\''+k+'\')">📗</span>'
+      : '<span title="Calculado automático · clique pra fixar valor manual" style="opacity:.55;cursor:pointer" onclick="editPLMensal(\''+k+'\')">⚙️</span>';
     return '<tr><td>'+ymLabel(k)+' '+srcIcon+'</td><td class="'+cl+'">'+fmtSig(x.pl)+'</td><td class="'+cl+'">'+fmtPct(pct)+'</td><td>'+(x.aporte?fmt(x.aporte):'—')+'</td><td>'+(x.retirada?fmt(x.retirada):'—')+'</td><td>'+fmt(x.patFim)+'</td></tr>';
   }).join('');
   const lastPat=state.rows.length?state.rows[state.rows.length-1].patrimonio:state.base;
