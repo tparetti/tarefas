@@ -296,15 +296,20 @@ function monthlyAgg(){
   const m={};
   state.rows.forEach((r,i)=>{
     const k=ymKey(r.data);
-    if(!m[k])m[k]={pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:''};
-    m[k].pl+=r.var||0;  // soma das variações brutas (igual Excel)
+    if(!m[k])m[k]={varBruta:0,pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:''};
+    m[k].varBruta+=r.var||0;
     if(r.tipo==='aporte')m[k].aporte+=r.valor||0;
     if(r.tipo==='retirada')m[k].retirada+=r.valor||0;
     if(r.data>m[k].dataFim){m[k].dataFim=r.data;m[k].patFim=r.patrimonio}
   });
   const keys=Object.keys(m).sort();
   let prevFim=state.base;
-  keys.forEach(k=>{m[k].patIni=prevFim;prevFim=m[k].patFim});
+  keys.forEach(k=>{
+    m[k].patIni=prevFim;
+    // P&L de trading "limpo" = variação bruta - aporte + retirada
+    m[k].pl = m[k].varBruta - m[k].aporte + m[k].retirada;
+    prevFim=m[k].patFim;
+  });
   return {months:keys,data:m};
 }
 
