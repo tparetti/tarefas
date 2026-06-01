@@ -296,18 +296,27 @@ function monthlyAgg(){
   const m={};
   state.rows.forEach((r,i)=>{
     const k=ymKey(r.data);
-    if(!m[k])m[k]={varBruta:0,pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:''};
+    if(!m[k])m[k]={varBruta:0,pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:'',src:'calc'};
     m[k].varBruta+=r.var||0;
     if(r.tipo==='aporte')m[k].aporte+=r.valor||0;
     if(r.tipo==='retirada')m[k].retirada+=r.valor||0;
     if(r.data>m[k].dataFim){m[k].dataFim=r.data;m[k].patFim=r.patrimonio}
   });
   const keys=Object.keys(m).sort();
+  const lastYM=keys[keys.length-1];
   let prevFim=state.base;
   keys.forEach(k=>{
     m[k].patIni=prevFim;
-    // P&L de trading "limpo" = variação bruta - aporte + retirada
-    m[k].pl = m[k].varBruta - m[k].aporte + m[k].retirada;
+    // Prioridade: valor manual em state.plMensal (fonte Excel/Resumo) > cálculo limpo automático
+    // Mês corrente sempre é dinâmico (calculado)
+    const override = state.plMensal && state.plMensal[k];
+    if (override != null && k !== lastYM) {
+      m[k].pl = override;
+      m[k].src = 'excel';
+    } else {
+      m[k].pl = m[k].varBruta - m[k].aporte + m[k].retirada;
+      m[k].src = (k===lastYM ? 'calc-corrente' : 'calc');
+    }
     prevFim=m[k].patFim;
   });
   return {months:keys,data:m};
@@ -339,12 +348,12 @@ function renderKPIs(){
   document.getElementById('k-pat').textContent='US$ '+fmt(pat);
   document.getElementById('k-pat-brl').textContent='≈ R$ '+fmt(pat*camb)+' · câmbio '+camb.toFixed(2);
 
-  const varBrutaAcum=state.rows.reduce((s,r)=>s+(r.var||0),0); // = pat_atual - pat_base
   const totalAp=state.rows.filter(r=>r.tipo==='aporte').reduce((s,r)=>s+(r.valor||0),0);
   const totalRet=state.rows.filter(r=>r.tipo==='retirada').reduce((s,r)=>s+(r.valor||0),0);
   const net=totalAp-totalRet;
-  // Resultado de trading "limpo" = variação patrimonial - aporte líquido
-  const tradingPL=varBrutaAcum-net;
+  // Resultado de trading = soma dos P&L mensais (Excel pros fechados + calc pro corrente)
+  const ag=monthlyAgg();
+  const tradingPL = ag.months.reduce((s,k)=>s+(ag.data[k].pl||0), 0);
   const baseInvest=state.base+net;
   const plPct=baseInvest?tradingPL/baseInvest*100:0;
   const e=document.getElementById('k-pl');
@@ -356,11 +365,10 @@ function renderKPIs(){
   document.getElementById('k-net').className='val '+(net>=0?'ap':'ret');
   document.getElementById('k-net-det').textContent='Aporte '+fmt(totalAp)+' − Retirada '+fmt(totalRet);
 
-  // Mês atual
+  // Mês atual - usa o P&L do monthlyAgg (Excel se override, ou cálculo limpo)
   const curYM=ymKey(last.data);
-  const mesRows=state.rows.filter(r=>ymKey(r.data)===curYM);
-  const mesPL=mesRows.reduce((s,r)=>s+(r.var||0),0);
-  const patIniMes=mesRows[0]?(state.rows[state.rows.indexOf(mesRows[0])-1]?.patrimonio||state.base):pat;
+  const mesPL = ag.data[curYM] ? ag.data[curYM].pl : 0;
+  const patIniMes = ag.data[curYM] ? ag.data[curYM].patIni : state.base;
   const mesPct=patIniMes?mesPL/patIniMes*100:0;
   const em=document.getElementById('k-mes');
   em.textContent=(mesPL>=0?'+':'')+'US$ '+fmt(Math.abs(mesPL));
@@ -454,11 +462,29 @@ function renderMonthTable(){
     totalPL+=x.pl;totalAp+=x.aporte;totalRt+=x.retirada;
     const cl=x.pl>=0?'pos':'neg';
     const pct=x.patIni?x.pl/x.patIni*100:0;
-    return '<tr><td>'+ymLabel(k)+'</td><td class="'+cl+'">'+fmtSig(x.pl)+'</td><td class="'+cl+'">'+fmtPct(pct)+'</td><td>'+(x.aporte?fmt(x.aporte):'—')+'</td><td>'+(x.retirada?fmt(x.retirada):'—')+'</td><td>'+fmt(x.patFim)+'</td></tr>';
+    const srcIcon = x.src==='excel' ? '<span title="Valor oficial do Excel" style="opacity:.5;cursor:pointer" onclick="editPLMensal(\''+k+'\')">📗</span>'
+                  : x.src==='calc-corrente' ? '<span title="Mês corrente — calculado dinâmico" style="opacity:.5">🔄</span>'
+                  : '<span title="Calculado" style="opacity:.5;cursor:pointer" onclick="editPLMensal(\''+k+'\')">⚙️</span>';
+    return '<tr><td>'+ymLabel(k)+' '+srcIcon+'</td><td class="'+cl+'">'+fmtSig(x.pl)+'</td><td class="'+cl+'">'+fmtPct(pct)+'</td><td>'+(x.aporte?fmt(x.aporte):'—')+'</td><td>'+(x.retirada?fmt(x.retirada):'—')+'</td><td>'+fmt(x.patFim)+'</td></tr>';
   }).join('');
   const lastPat=state.rows.length?state.rows[state.rows.length-1].patrimonio:state.base;
   const cl=totalPL>=0?'pos':'neg';
   document.querySelector('#tblMonth tfoot').innerHTML='<tr><td>TOTAL</td><td class="'+cl+'">'+fmtSig(totalPL)+'</td><td>—</td><td>'+fmt(totalAp)+'</td><td>'+fmt(totalRt)+'</td><td>'+fmt(lastPat)+'</td></tr>';
+}
+
+function editPLMensal(ym){
+  const cur = state.plMensal && state.plMensal[ym] != null ? state.plMensal[ym] : '';
+  const v = prompt('P&L oficial de '+ymLabel(ym)+' em US$ (deixe vazio pra usar cálculo automático):', cur);
+  if(v===null)return; // cancelou
+  if(!state.plMensal)state.plMensal={};
+  if(v.trim()===''){
+    delete state.plMensal[ym];
+  } else {
+    const n=parseFloat(v.replace(',','.'));
+    if(isNaN(n)){alert('Valor inválido');return}
+    state.plMensal[ym]=n;
+  }
+  renderAll();scheduleSave();
 }
 
 // ============ ADD / EDIT / DELETE ============
