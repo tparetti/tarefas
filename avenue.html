@@ -273,18 +273,14 @@ const cambioFor=ym=>{
 
 function sortRows(){state.rows.sort((a,b)=>a.data.localeCompare(b.data))}
 
-// Variação do dia = pat - patAnterior (bruta, igual Excel)
+// Variação do dia = (pat - patAnterior) - aporte + retirada
+// Excluindo o efeito de movimentos efetivados → mostra só o trading do dia
 function computeVar(idx){
   const r=state.rows[idx];
   const prev=idx>0?state.rows[idx-1].patrimonio:state.base;
-  return r.patrimonio - prev;
-}
-// P&L de trading "limpo" do dia = bruta - aporte + retirada
-function computeTradingPL(idx){
-  const r=state.rows[idx];
   const aporte=r.tipo==='aporte'?(r.valor||0):0;
   const retirada=r.tipo==='retirada'?(r.valor||0):0;
-  return computeVar(idx) - aporte + retirada;
+  return r.patrimonio - prev - aporte + retirada;
 }
 
 function recomputeAllVars(){
