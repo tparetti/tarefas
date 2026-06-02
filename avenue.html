@@ -92,8 +92,29 @@ tfoot td{font-weight:700;border-top:2px solid var(--line);border-bottom:none}
 .month-pill:hover{color:var(--txt)}
 .month-pill.active{background:var(--acc);border-color:var(--acc);color:#fff}
 </style>
+<style>
+#authGate{position:fixed;inset:0;background:#0d1117;z-index:999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:24px}
+#authGate.hide{display:none}
+#authGate .lock{font-size:42px;margin-bottom:6px}
+#authGate h2{font-size:18px;font-weight:600;color:#e6edf3}
+#authGate p{font-size:13px;color:#8b949e;margin-bottom:6px}
+#authGate input{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:13px 16px;color:#e6edf3;font-size:15px;font-family:inherit;outline:none;width:280px;text-align:center;letter-spacing:2px}
+#authGate input:focus{border-color:#58a6ff;box-shadow:0 0 0 3px rgba(88,166,255,.15)}
+#authGate button{background:#58a6ff;border:none;border-radius:10px;padding:11px 28px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:.2s}
+#authGate button:hover{background:#4493e0}
+#authErr{color:#f85149;font-size:13px;height:18px;font-weight:600}
+</style>
 </head>
 <body>
+
+<div id="authGate">
+  <div class="lock">🔒</div>
+  <h2>Avenue Dashboard</h2>
+  <p>Acesso restrito · Thiago Paretti</p>
+  <input type="password" id="authPwd" placeholder="senha" autocomplete="off">
+  <button onclick="tryAuth()">Entrar</button>
+  <div id="authErr"></div>
+</div>
 
 <header>
   <div>
@@ -540,11 +561,42 @@ function delRow(){
 document.getElementById('editModal').addEventListener('click',e=>{if(e.target.id==='editModal')closeModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-// Init
-document.getElementById('i-data').value=nextBusinessDay(todayISO());
-loadFromCloud();
-// Auto refresh every 60s
-setInterval(()=>{if(_loaded&&!_saveTimer)loadFromCloud()},60000);
+// ============ AUTH GATE ============
+const PWD_HASH='199bc2553344fdc63742789ac520afc8f2313cec14750cd7d66dfc7694418de0';
+const SESSION_DAYS=30;
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function tryAuth(){
+  const pwd=document.getElementById('authPwd').value;
+  const err=document.getElementById('authErr');
+  err.textContent='';
+  const h=await sha256(pwd);
+  if(h===PWD_HASH){
+    localStorage.setItem('avenue_auth', JSON.stringify({ok:true,exp:Date.now()+SESSION_DAYS*86400000}));
+    unlock();
+  } else {
+    err.textContent='Senha incorreta';
+    document.getElementById('authPwd').select();
+  }
+}
+function unlock(){
+  document.getElementById('authGate').classList.add('hide');
+  document.getElementById('i-data').value=nextBusinessDay(todayISO());
+  loadFromCloud();
+  setInterval(()=>{if(_loaded&&!_saveTimer)loadFromCloud()},60000);
+}
+function checkAuth(){
+  try{
+    const s=JSON.parse(localStorage.getItem('avenue_auth')||'{}');
+    if(s.ok && s.exp && s.exp > Date.now()){unlock();return}
+  }catch(e){}
+  // Não autenticado: foca no input
+  setTimeout(()=>document.getElementById('authPwd').focus(),100);
+  document.getElementById('authPwd').addEventListener('keydown',e=>{if(e.key==='Enter')tryAuth()});
+}
+checkAuth();
 </script>
 </body>
 </html>
