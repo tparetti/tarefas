@@ -314,8 +314,8 @@ function monthlyAgg(){
   const m={};
   state.rows.forEach((r,i)=>{
     const k=ymKey(r.data);
-    if(!m[k])m[k]={varBruta:0,pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:'',src:'calc'};
-    m[k].varBruta+=r.var||0;
+    if(!m[k])m[k]={varSoma:0,pl:0,aporte:0,retirada:0,patFim:null,patIni:null,dataFim:'',src:'calc'};
+    m[k].varSoma+=r.var||0;  // r.var já é limpa (sem aporte/retirada)
     if(r.tipo==='aporte')m[k].aporte+=r.valor||0;
     if(r.tipo==='retirada')m[k].retirada+=r.valor||0;
     if(r.data>m[k].dataFim){m[k].dataFim=r.data;m[k].patFim=r.patrimonio}
@@ -324,13 +324,13 @@ function monthlyAgg(){
   let prevFim=state.base;
   keys.forEach(k=>{
     m[k].patIni=prevFim;
-    // Sempre prioriza valor oficial em state.plMensal (Excel). Sem override → calcula limpo.
+    // Override do Excel se existir; senão soma direta das var diárias (que já estão limpas)
     const override = state.plMensal && state.plMensal[k];
     if (override != null) {
       m[k].pl = override;
       m[k].src = 'excel';
     } else {
-      m[k].pl = m[k].varBruta - m[k].aporte + m[k].retirada;
+      m[k].pl = m[k].varSoma;
       m[k].src = 'calc';
     }
     prevFim=m[k].patFim;
