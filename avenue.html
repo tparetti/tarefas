@@ -574,7 +574,7 @@ async function tryAuth(){
   err.textContent='';
   const h=await sha256(pwd);
   if(h===PWD_HASH){
-    localStorage.setItem('avenue_auth', JSON.stringify({ok:true,exp:Date.now()+SESSION_DAYS*86400000}));
+    localStorage.setItem('paretti_apps_auth', JSON.stringify({ok:true,exp:Date.now()+SESSION_DAYS*86400000}));
     unlock();
   } else {
     err.textContent='Senha incorreta';
@@ -589,7 +589,7 @@ function unlock(){
 }
 function checkAuth(){
   try{
-    const s=JSON.parse(localStorage.getItem('avenue_auth')||'{}');
+    const s=JSON.parse(localStorage.getItem('paretti_apps_auth')||'{}');
     if(s.ok && s.exp && s.exp > Date.now()){unlock();return}
   }catch(e){}
   // Não autenticado: foca no input
