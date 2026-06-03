@@ -373,11 +373,11 @@ function renderKPIs(){
   const baseInvest=state.base+net;
   const plPct=baseInvest?tradingPL/baseInvest*100:0;
   const e=document.getElementById('k-pl');
-  e.textContent=(tradingPL>=0?'+':'')+'US$ '+fmt(Math.abs(tradingPL));
+  e.textContent=(tradingPL>=0?'+':'-')+'US$ '+fmt(Math.abs(tradingPL));
   e.className='val '+(tradingPL>=0?'pos':'neg');
   document.getElementById('k-pl-pct').textContent=fmtPct(plPct)+' · ≈ R$ '+fmt(Math.abs(tradingPL)*camb);
 
-  document.getElementById('k-net').textContent=(net>=0?'+':'')+'US$ '+fmt(Math.abs(net));
+  document.getElementById('k-net').textContent=(net>=0?'+':'-')+'US$ '+fmt(Math.abs(net));
   document.getElementById('k-net').className='val '+(net>=0?'ap':'ret');
   document.getElementById('k-net-det').textContent='Aporte '+fmt(totalAp)+' − Retirada '+fmt(totalRet);
 
@@ -387,13 +387,13 @@ function renderKPIs(){
   const patIniMes = ag.data[curYM] ? ag.data[curYM].patIni : state.base;
   const mesPct=patIniMes?mesPL/patIniMes*100:0;
   const em=document.getElementById('k-mes');
-  em.textContent=(mesPL>=0?'+':'')+'US$ '+fmt(Math.abs(mesPL));
+  em.textContent=(mesPL>=0?'+':'-')+'US$ '+fmt(Math.abs(mesPL));
   em.className='val '+(mesPL>=0?'pos':'neg');
   document.getElementById('k-mes-pct').textContent=fmtPct(mesPct)+' · '+ymLabel(curYM);
 
   // Var do dia (último)
   const ed=document.getElementById('k-dia');
-  ed.textContent=(last.var>=0?'+':'')+'US$ '+fmt(Math.abs(last.var||0));
+  ed.textContent=(last.var>=0?'+':'-')+'US$ '+fmt(Math.abs(last.var||0));
   ed.className='val '+((last.var||0)>=0?'pos':'neg');
   const d=new Date(last.data+'T00:00');
   document.getElementById('k-dia-dt').textContent=d.toLocaleDateString('pt-BR')+(last.ativo?' · '+last.ativo:'');
